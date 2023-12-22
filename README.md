@@ -10,9 +10,13 @@ TestBase is the base class ,which will load **config.properties** file and initi
 It contains the properties which are common like base url,username and password, browser(like chrome ,firefox..etc)
 
 **LoginPage Class**
-It contains the page objects and Actions
+It contains the page objects and Actions for login page
+It inherits TestBase class
 
 **TestUtil Class**
 It contains the common utility methods and variables
+
+**LoginPageTest Class**
+It contains the testscripts for Login Page
 
 
