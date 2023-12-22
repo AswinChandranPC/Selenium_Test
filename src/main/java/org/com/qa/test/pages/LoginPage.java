@@ -34,8 +34,6 @@ public class LoginPage extends TestBase
     public String loginTest(String un,String pwd){
         usernameTextBox.sendKeys(un);
         passwordTextBox.sendKeys(pwd);
-//        driver.findElement(By.name("email")).sendKeys(un);
-//        driver.findElement(By.name("password")).sendKeys(pwd);
 
         JavascriptExecutor js =(JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()",loginBtn);
