@@ -31,7 +31,7 @@ public class LoginPage extends TestBase
     @FindBy(xpath = "//div/span[contains(text(),'Aswin PC')]")
     WebElement homePageTitle;
 
-    public String loginTest(String un,String pwd){
+    public String loginTest(String un,String pwd) throws InterruptedException {
         usernameTextBox.sendKeys(un);
         passwordTextBox.sendKeys(pwd);
 
@@ -41,6 +41,9 @@ public class LoginPage extends TestBase
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         wait.until(ExpectedConditions.textMatches(By.xpath("//div/span[contains(text(),'Aswin PC')]"), Pattern.compile("Aswin PC")));
 
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        jsExecutor. executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", homePageTitle);
+        System.out.println(homePageTitle.getText());
         return homePageTitle.getText();
     }
 

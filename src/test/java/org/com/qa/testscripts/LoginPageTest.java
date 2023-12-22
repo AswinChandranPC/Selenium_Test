@@ -22,9 +22,10 @@ public class LoginPageTest extends TestBase
     }
 
     @Test(priority = 1)
-    public void verifyLoginTest(){
+    public void verifyLoginTest() throws InterruptedException {
         String title = loginPage.loginTest(prop.getProperty("username"),prop.getProperty("password"));
         Assert.assertEquals(title,"Aswin PC");
+        Thread.sleep(5000);
     }
 
     @AfterMethod
