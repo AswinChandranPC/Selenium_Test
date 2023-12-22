@@ -22,8 +22,6 @@ public class TestBase {
         try {
             FileInputStream ip = new FileInputStream("src/main/java/org/com/qa/test/config/config.properties");
             prop.load(ip);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e){
             e.printStackTrace();
         }
