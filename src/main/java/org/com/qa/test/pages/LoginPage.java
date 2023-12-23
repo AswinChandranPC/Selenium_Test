@@ -1,7 +1,6 @@
 package org.com.qa.test.pages;
 
 import org.com.qa.test.Base.TestBase;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,7 +9,6 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.regex.Pattern;
 
 public class LoginPage extends TestBase
 {
@@ -40,7 +38,7 @@ public class LoginPage extends TestBase
     WebElement homePageTitle;
 
     //login test function
-    public String loginTest(String un,String pwd) throws InterruptedException {
+    public String loginTest(String un,String pwd) {
         //Set username to username Text box
         usernameTextBox.sendKeys(un);
         //Set password to password Text box
@@ -49,19 +47,17 @@ public class LoginPage extends TestBase
         JavascriptExecutor js =(JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()",loginBtn);
 
-        //Wait till the homePageTitle webelement displayed
+        //Wait till the homePageTitle web element displayed
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         if(wait.until(ExpectedConditions.visibilityOf(homePageTitle)).isDisplayed()){
             //code for highlighting home page title
             JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-            jsExecutor. executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", homePageTitle);
+            jsExecutor.executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", homePageTitle);
             System.out.println(homePageTitle.getText());
             title=homePageTitle.getText();
         }
         //return home page title
         return title ;
-        
-
     }
 
 
