@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
 public class LoginPage extends TestBase
 {
 
-    
+    String title;
 
     public LoginPage(){
         PageFactory.initElements(driver,this);
@@ -49,18 +49,19 @@ public class LoginPage extends TestBase
         JavascriptExecutor js =(JavascriptExecutor)driver;
         js.executeScript("arguments[0].click()",loginBtn);
 
-        //Wait till the homePageTitle webelement text matches with expected pattern or text
+        //Wait till the homePageTitle webelement displayed
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(60));
-        wait.until(ExpectedConditions.textMatches(By.xpath("//div/span[contains(text(),'Aswin PC')]"), Pattern.compile("Aswin PC")));
-        
-        //code for highlighting home page title
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
-        jsExecutor. executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", homePageTitle);
-        
-        System.out.println(homePageTitle.getText());
-
+        if(wait.until(ExpectedConditions.visibilityOf(homePageTitle)).isDisplayed()){
+            //code for highlighting home page title
+            JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+            jsExecutor. executeScript("arguments[0].setAttribute('style', 'border:2px solid red; background:yellow')", homePageTitle);
+            System.out.println(homePageTitle.getText());
+            title=homePageTitle.getText();
+        }
         //return home page title
-        return homePageTitle.getText();
+        return title ;
+        
+
     }
 
 
